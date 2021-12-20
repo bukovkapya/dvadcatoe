@@ -1,0 +1,22 @@
+all: prog1.exe
+
+main.o: ../src/main.c
+	gcc ../src/main.c -c -o main.o
+
+func1.o: ../src/func1.c
+	gcc ../src/func1.c -c -o func1.o
+
+func2_1.o: ../src/func2_1.c
+	gcc ../src/func2_1.c -c -o funk2_1.o
+
+prog1.exe: main.o func1.o func2_1.o
+	gcc -o prog1.exe main.o func1.o funk2_1.o
+
+install: prog1.exe
+	install ./prog1.exe /usr/local/bin
+
+uninstall: 
+	rm -rf /usr/local/bin/prog1.exe
+
+clear: 
+	rm -rf prog1.exe *.o
